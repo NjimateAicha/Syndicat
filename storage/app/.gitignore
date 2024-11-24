@@ -1,0 +1,6 @@
+*
+public/documents/*
+public/reclamations/*
+!public/documents
+!public/reclamations
+!.gitignore
