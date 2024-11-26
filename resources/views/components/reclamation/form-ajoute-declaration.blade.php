@@ -1,4 +1,4 @@
-    @role('Super Admin|Admin|Manager principal|Manager')
+    @role('Super Admin|Admin|Manager principal|Manager|Propriétaire|Résident')
         <form method="post" action="{{ route($postUrl) }}" enctype="multipart/form-data" class="min-w-[350px]">
             @csrf
 
@@ -96,8 +96,7 @@
             </div>
         </form>
     @endrole
-
-    @role('Super Admin|Admin|Manager principal|Manager')
+    @role('Super Admin|Admin|Manager principal|Manager|Propriétaire|Résident')
         <script>
             // function updateSelectedTypes() {
             //     const selectedTypes = [];

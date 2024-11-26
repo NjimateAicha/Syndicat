@@ -78,17 +78,17 @@
                 @csrf
                 <div class="p-[0_12px_27px_15px] flex flex-row w-full box-sizing-border">
                     <div class="rounded-[50px] m-[5px_5px_5px_0] w-[60px] h-[auto]" 
-     style="background-image: url('{{ asset('storage/' . $user->image) }}'); background-size: cover; background-position: center;">
-</div>
+                    style="background-image: url('{{ asset('storage/' . $user->image) }}'); background-size: cover; background-position: center;">
+            </div>
 
 
-            
-<div
-    class="rounded-[40px] bg-[#F1F1F1] p-[12.5px_15px_12.5px_15px] w-full box-sizing-border">
-    <input type="text" placeholder="{{__('Contenu de votre commentaire')}}" id="text" name="text"
-        class="rounded-[8px] bg-[#F1F1F1] m-[0_120px_0_0] inline-block break-words font-['Inter'] font-normal text-[12px] text-[#A2A2A2] box-sizing-border w-full outline-none" />
-    <input name="reclamation_id" value="{{ $data->id }}" type="hidden">
-</div>
+                        
+            <div
+                class="rounded-[40px] bg-[#F1F1F1] p-[12.5px_15px_12.5px_15px] w-full box-sizing-border">
+                <input type="text" placeholder="{{__('Contenu de votre commentaire')}}" id="text" name="text"
+                    class="rounded-[8px] bg-[#F1F1F1] m-[0_120px_0_0] inline-block break-words font-['Inter'] font-normal text-[12px] text-[#A2A2A2] box-sizing-border w-full outline-none" />
+                <input name="reclamation_id" value="{{ $data->id }}" type="hidden">
+            </div>
 
 
                     <button type="submit">
@@ -104,6 +104,35 @@
         </form>
 
         @endrole
+
+        @role('Résident')
+    @if ($data->user_id == Auth::user()->id)  <!-- Vérification que la nuisance appartient bien à l'utilisateur actuel -->
+        <form action="{{ route('commentaires.store') }}" method="POST" class="w-full">
+            @csrf
+            <div class="p-[0_12px_27px_15px] flex flex-row w-full box-sizing-border">
+                <div class="rounded-[50px] m-[5px_5px_5px_0] w-[60px] h-[auto]" 
+                style="background-image: url('{{ asset('storage/' . $user->image) }}'); background-size: cover; background-position: center;">
+                </div>
+
+                <div class="rounded-[40px] bg-[#F1F1F1] p-[12.5px_15px_12.5px_15px] w-full box-sizing-border">
+                    <input type="text" placeholder="{{__('Contenu de votre commentaire')}}" id="text" name="text"
+                        class="rounded-[8px] bg-[#F1F1F1] m-[0_120px_0_0] inline-block break-words font-['Inter'] font-normal text-[12px] text-[#A2A2A2] box-sizing-border w-full outline-none" />
+                    <input name="reclamation_id" value="{{ $data->id }}" type="hidden">
+                </div>
+
+                <button type="submit">
+                    <div class="rounded-[60px] border-[1px_solid_#9EAFCE] bg-[#3C4C7C] relative flex p-[12.5px_0_12.5px_0] w-full min-w-[160px] box-sizing-border justify-center">
+                        <span class="break-words font-['Inter'] font-bold text-[12px] text-[#FFFFFF]">
+                            {{__('Ajouter un commentaire')}}
+                        </span>
+                    </div>
+                </button>
+            </div>
+        </form>
+     <!-- Message d'erreur si le résident tente de commenter une nuisance qu'il n'a pas créée -->
+    @endif
+@endrole
+
 
 
     </div>
