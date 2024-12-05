@@ -98,6 +98,7 @@
                 placeholder="Rechercher">
         </div>
 
+
         <!-- Contact List -->
         <ul class="mt-4 space-y-2 max-h-80 overflow-y-auto contact-list custom-scrollbar">
             @forelse ($users as $usersList)
@@ -108,16 +109,16 @@
                         {{-- <div class="avatar av-m"
                             style="background-image: url('{{ $usersList->avatar }}');">
                              <div class="avatar av-s header-avatar" style="margin: 0 10px; margin-top: -5px; margin-bottom: -5px;"></div>
-                     
+
                         </div> --}}
                         <div class="avatar av-m"
                         style="background-image: url('{{ $usersList->avatar ? $usersList->avatar : asset('path/to/default-avatar.png') }}');">
                         <!-- Small avatar inside -->
-                        <div class="avatar av-s header-avatar" 
+                        <div class="avatar av-s header-avatar"
                              style="margin: 0 10px; margin-top: -5px; margin-bottom: -5px;">
                         </div>
                    </div>
-                        
+
                         <!-- User Info -->
                         <div>
                             <p class="font-medium text-gray-900">{{ $usersList->name }}</p>
@@ -135,5 +136,5 @@
             @endforelse
         </ul>
     </div>
-    
+
 </div>

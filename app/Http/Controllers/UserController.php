@@ -134,27 +134,41 @@ class UserController extends Controller
 
     public function searchContacts(Request $request)
     {
-        // Get the search input, or default to an empty string
-        $search = $request->search ?? '';
-        // Query for users involved in conversations
-        $users = Message::join('users', function ($join) {
-                $join->on('ch_messages.from_id', '=', 'users.id')
-                     ->orOn('ch_messages.to_id', '=', 'users.id');
-            })
-            ->leftjoin('residences', 'users.residence_id', '=', 'residences.id')
-            ->where('users.residence_id', Auth::user()->residence_id) 
-            // ->where(function ($query) {
-            //     $query->where('ch_messages.from_id', Auth::id())
-            //           ->orWhere('ch_messages.to_id', Auth::id());
-            // })
-            ->where('users.name', 'like', '%' . $search . '%') // Search by user name
-            ->where('users.id', '!=', Auth::id()) // Exclude the current user
-            ->distinct('users.id') // Ensure unique users
-            ->select('users.*') // Select user details
-            ->paginate(10); // Optionally paginate results
-    
-        // Return the view with users
+        // // Get the search input, or default to an empty string
+        // $search = $request->search ?? '';
+        // // Query for users involved in conversations
+        // $users = Message::join('users', function ($join) {
+        //         $join->on('ch_messages.from_id', '=', 'users.id')
+        //              ->orOn('ch_messages.to_id', '=', 'users.id');
+        //     })
+        //     ->leftjoin('residences', 'users.residence_id', '=', 'residences.id')
+        //     ->where('users.residence_id', Auth::user()->residence_id)
+        //     // ->where(function ($query) {
+        //     //     $query->where('ch_messages.from_id', Auth::id())
+        //     //           ->orWhere('ch_messages.to_id', Auth::id());
+        //     // })
+        //     ->where('users.name', 'like', '%' . $search . '%') // Search by user name
+        //     ->where('users.id', '!=', Auth::id()) // Exclude the current user
+        //     ->distinct('users.id') // Ensure unique users
+        //     ->select('users.*') // Select user details
+        //     ->paginate(10); // Optionally paginate results
+
+        // // Return the view with users
+        // return view('tchat.show', compact('users'));
+        // Get the search input, defaulting to an empty string
+
+
+        if ($request->search == null)
+            $users = User::where('residence_id', Auth::user()->residence_id)->get();
+        else
+        {
+            $users = User::where('residence_id', Auth::user()->residence_id)
+                ->where('name', 'like', '%' . $request->search . '%')
+                ->get();
+        }
+
         return view('tchat.show', compact('users'));
+
     }
 /*     public function getGroup(Request $request)
     {
@@ -166,7 +180,7 @@ class UserController extends Controller
                      ->orOn('ch_messages.to_id', '=', 'users.id');
             })
             ->leftjoin('residences', 'users.residence_id', '=', 'residences.id')
-            ->where('users.residence_id', Auth::user()->residence_id) 
+            ->where('users.residence_id', Auth::user()->residence_id)
             // ->where(function ($query) {
             //     $query->where('ch_messages.from_id', Auth::id())
             //           ->orWhere('ch_messages.to_id', Auth::id());
@@ -176,14 +190,14 @@ class UserController extends Controller
             ->distinct('users.id') // Ensure unique users
             ->select('users.*') // Select user details
             ->paginate(10); // Optionally paginate results
-    
+
         // Return the view with users
         return view('tchat.show_group', compact('users'));
     }
 
 
 
-    
+
  */
 
  public function getGroup(Request $request)
@@ -194,24 +208,24 @@ class UserController extends Controller
         $protocol = (!empty($_SERVER['HTTPS']) && $_SERVER['HTTPS'] !== 'off') ? "https://" : "http://";
         $host = $_SERVER['HTTP_HOST'];
         $requestUri = $_SERVER['REQUEST_URI'];
-        
+
         return $protocol . $host . $requestUri;
     }
 
     function getNumberFromUrl() {
         // Get the current URL
         $url = getCurrentUrl(); // Replace this with your function to get the current URL
-        
+
         // Parse the URL to get the query string
         $parsedUrl = parse_url($url);
-        
+
         if (isset($parsedUrl['query'])) {
             // Initialize an empty array to hold query parameters
             $queryParams = [];
-    
+
             // Parse the query string into an associative array
             parse_str($parsedUrl['query'], $queryParams);
-    
+
             // Return the first value from the query parameters
             return reset($queryParams);
         }
@@ -223,16 +237,16 @@ class UserController extends Controller
 
     // Get the residence ID from the URL if it exists
     $residenceId2 = getNumberFromUrl();
-    
+
     // Check if there is a query string and if it starts with a number
     if ($residenceId2) {
         $residenceId = $residenceId2; // Convert to integer
-        
+
     } else {
         $residenceId = Auth::user()->residence_id; // Fallback to the authenticated user's residence ID
     }
 
-    
+
 
     // Query for users who belong to the specified residence
     $users = User::leftJoin('residences', 'users.residence_id', '=', 'residences.id')
@@ -300,5 +314,5 @@ class UserController extends Controller
     }
 
 
-    
+
 }

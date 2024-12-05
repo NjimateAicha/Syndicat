@@ -45,11 +45,11 @@
                         <p class="messenger-title"><span>Groups</span></p>
                         {{-- @foreach ($groups as $item)
                         <p>{{$item}}</p> --}}
-                            
-                    
-                     
+
+
+
                         <div class="messenger-groups app-scroll-hidden"></div>
-                        
+
                     </div>
 
                     {{-- Contacts --}}
@@ -74,7 +74,7 @@
                 <nav class="chatify-d-flex chatify-justify-content-between chatify-align-items-center">
                     <div class="chatify-d-flex chatify-justify-content-between chatify-align-items-center">
                         <a href="#" class="show-listView"><i class="fas fa-arrow-left"></i></a>
-                        
+
                         <div class="avatar av-s header-avatar" style="margin: 0 10px; margin-top: -5px; margin-bottom: -5px;"></div>
                         <a href="#" class="user-name">{{ config('chatify.name') }}</a>
                     </div>
@@ -83,10 +83,10 @@
                         <a href="#" class="add-to-favorite"><i class="fas fa-star"></i></a>
                         <a href="/"><i class="fas fa-home"></i></a>
                         <a href="#" class="show-infoSide"><i class="fas fa-info-circle"></i></a>
-                        
+
                     </nav>
-                    
-                    
+
+
 
                 </nav>
                 <div class="internet-connection">
@@ -127,5 +127,5 @@
 
     @include('Chatify::layouts.modals')
     @include('Chatify::layouts.footerLinks')
-    
+
 @endsection
