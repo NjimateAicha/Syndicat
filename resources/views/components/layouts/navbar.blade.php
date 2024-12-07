@@ -12,7 +12,12 @@
                 {{-- @php
                 echo $user
                 @endphp --}}
-<div class="relative flex flex-row justify-between w-full p-5 bg-white rounded-[20px] mb-7 box-border">
+<div class="relative items-center flex md:flex-row lg:flex-row flex-col  justify-between w-full p-5 bg-white rounded-[20px] mb-7 box-border">
+    <button id="toggleSidebar" class="p-2 bg-blue-600 text-white z-50 rounded-md flex flex-col justify-between h-12 w-12">
+        <span class="block h-1.5 w-8 bg-white rounded-sm"></span>
+        <span class="block h-1.5 w-8 bg-white rounded-sm"></span>
+        <span class="block h-1.5 w-8 bg-white rounded-sm"></span>
+    </button>
     <div class="flex">
         {{-- @if ($residence_all) --}}
         @role('Super Admin|Admin')
@@ -199,5 +204,12 @@
             }
         });
     </script>
+    <script>
+        const toggleButton = document.getElementById('toggleSidebar');
+        const sidebar = document.getElementById('sidebar');
 
+        toggleButton.addEventListener('click', () => {
+            sidebar.classList.toggle('hidden');
+        });
+    </script>
 </div>

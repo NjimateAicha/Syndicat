@@ -8,7 +8,7 @@
     <div class="flex-1 w-full ">
 
         <!-- Statistics Section -->
-        <div class="grid grid-cols-6 gap-4 mb-10">
+        <div class="grid md:grid-cols-6 gap-4 mb-10">
          
 @foreach ($roleCounts as $role => $count)
     @if (
@@ -34,9 +34,9 @@
         </div>
 
 
-        <div class="flex justify-between w-full  space-x-8">
+        <div class="flex justify-between flex-col md:flex-row w-full  gap-4 md:space-x-8">
             <!-- Contacts Section -->
-            <div class="w-2/3 bg-white rounded-xl shadow-md p-6">
+            <div class="md:w-2/3 bg-white rounded-xl shadow-md p-6">
                 <h2 class="text-lg font-semibold text-gray-700 mb-4">{{ __('Useful Contacts') }}</h2>
                 <div class="overflow-x-auto">
                     <table class="min-w-full table-auto">
@@ -153,7 +153,7 @@
                 $formattedLatestDate = \Carbon\Carbon::parse($latestDate)->format('d F Y');
             @endphp
 
-            <div class="w-full lg:w-1/3 bg-white rounded-xl shadow-md px-6">
+            <div class="w-full lg:w-1/3 bg-white rounded-xl shadow-md p-6">
                 <!-- InfoCom Section -->
                 <div class="mt-5">
                     <div class="flex flex-row justify-between items-baseline">
