@@ -6,7 +6,7 @@
     <form action="{{ route('regelement.update', $residence->id) }}" method="POST" id="myform">
         @csrf
         @method('POST')
-        <div class="flex flex-col w-[76rem] p-4 space-y-4 bg-white shadow-lg rounded-[20px] mb-6">
+        <div class="flex flex-col md:w-[76rem] p-4 space-y-4 bg-white shadow-lg rounded-[20px] mb-6">
             <!-- Toolbar and Save Button Layout -->
             <div class="w-full flex flex-row justify-between items-center rounded-lg">
                 <!-- Toolbar in the center -->
