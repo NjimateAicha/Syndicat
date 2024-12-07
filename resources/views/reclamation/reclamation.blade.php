@@ -5,11 +5,11 @@
 
 
 
-    <div class="flex flex-col w-full">
+    <div class="flex flex-col px-4 md:px-0 w-full">
         <!-- Header Section -->
         <div class="pb-[27px] flex flex-row justify-between w-full">
             <!-- Content for the first layout -->
-            <div class="flex-1 text-white  rounded-lg">
+            <div class="flex-1  text-white  rounded-lg">
                 <div
                     class="m-[3px_8.5px_4px_0] inline-block w-[409px] break-words font-['Inter'] font-semibold text-[14px] text-[#3C4C7C]">
                     {{__('Sinistres et Nuisances Déclarés au Sein de la Résidence')}}
@@ -22,7 +22,7 @@
         </div>
 
         <!-- First layout -->
-        <div class="flex flex-row justify-between">
+        <div class="flex flex-col md:flex-row justify-between">
             <div id="reclamtions" class="flex flex-col items-center pr-[20px] w-full ">
                 @if (isset($reclamations) && $reclamations->isNotEmpty())
                     @foreach ($reclamations as $post)
