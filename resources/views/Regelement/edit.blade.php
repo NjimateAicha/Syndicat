@@ -8,11 +8,11 @@
         @method('POST')
         <div class="flex flex-col md:w-[76rem] p-4 space-y-4 bg-white shadow-lg rounded-[20px] mb-6">
             <!-- Toolbar and Save Button Layout -->
-            <div class="w-full flex flex-row justify-between items-center rounded-lg">
+            <div class="w-full flex flex-col md:flex-row justify-between items-center rounded-lg">
                 <!-- Toolbar in the center -->
                 <div class="flex-1 basis-1/5 text-white p-2 rounded-lgbackground-color:#E9ECEE; color: #3c4c7c flex items-center justify-end"></div>
                 <div class="flex-1 basis-3/5 text-white p-2 rounded-lg flex justify-center">
-                    <div id="toolbar" style="border: none">
+                    <div id="toolbar" class="flex w-full flex-wrap gap-4" style="border: none">
                         <!-- Undo and Redo buttons -->
                         <button id="undo" class="ql-undo mx-3 shadow-[0px_4px_4px_0px_rgba(0,0,0,0.25)] rounded-[8px] w-[24px] h-[24px] box-sizing-border"  style="background-color:#E9ECEE"><img src="{{ asset('assets/images/undo_1.png') }}" width="18" height="18" alt="Undo" class="text-[#444444] transition-colors duration-300 ease-in-out hover:text-[#0066cc]"></button>
                         <button id="redo" class="ql-redo mx-3 shadow-[0px_4px_4px_0px_rgba(0,0,0,0.25)] rounded-[8px] w-[24px] h-[24px] box-sizing-border" style="background-color:#E9ECEE"><img src="{{ asset('assets/images/forward_1.png') }}" width="18" height="18" alt="Redo" class="text-[#444444] transition-colors duration-300 ease-in-out hover:text-[#0066cc]"></button>
