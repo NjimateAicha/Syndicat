@@ -39,7 +39,7 @@
 
         <!-- Second layout -->
         <div class="w-full p-4 rounded-lg">
-            <div class="flex flex-row gap-5 w-full">
+            <div class="flex flex-col md:flex-row gap-5 w-full">
                 <!-- PDF Reader -->
                 @if ($documents && $documents->isNotEmpty())
                     <div class="flex-grow flex flex-col">

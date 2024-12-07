@@ -1,4 +1,4 @@
-<form action="{{ route('document.store') }}" method="POST" enctype="multipart/form-data" class="w-full max-w-[330px]">
+<form action="{{ route('document.store') }}" method="POST" enctype="multipart/form-data" class="w-full md:max-w-[330px]">
     @csrf
 
     <div class="shadow-[0px_4px_4px_0px_rgba(0,0,0,0.25)] rounded-[20px] bg-[#FFFFFF] relative m-[0_0_155px_0] flex flex-col p-[16.5px_0_18px_0] box-border">
