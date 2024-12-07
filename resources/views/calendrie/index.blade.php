@@ -28,7 +28,7 @@
 
         <!-- Second layout -->
 
-        <div class="w-full rounded-lg flex-row box-sizing-border">
+        <div class="w-full rounded-lg flex-col bg-slate-800 box-sizing-border">
             <!-- Left Section (Calendar with Month and Year Select) -->
             <div class="flex-3/5 flex flex-col bg-white rounded-[20px] shadow-md items-center">
                 <div class="m-5">
