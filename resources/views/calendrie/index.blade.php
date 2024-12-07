@@ -62,51 +62,7 @@
             </div>
         </div>
 
-        <!-- Right Section (Optional - Additional Content) -->
-        {{-- <div class="flex-grow bg-white p-6 rounded-[20px] shadow-md ml-4 h-[600px]">
-                <!-- Placeholder for any content you may want to add -->
-                 <div class="flex flex-row justify-between">
-                    <h2
-                        class="mb-6 inline-block self-start break-words font-['Inter'] font-semibold text-[14px] text-[#3C4C7C]">
-                        {{ $today_dayName }} <!-- e.g., "mercredi" -->
-                    </h2>
-                    <h2
-                        class="mb-6 inline-block self-start break-words font-['Inter'] font-semibold text-[14px] text-[#3C4C7C]">
-                        {{ $today_day }} <!-- e.g., "25 septembre 2024" -->
-                    </h2>
-
-                </div>
-
-                <!-- Image taking full width -->
-                focus on this part
-                <div class=" m-[0_0_28px_0] w-[300px] h-[0px]"></div>
-                {{-- {{ $today }} --}}
-        {{-- @foreach ($events as $event)
-                    {{-- {{ $event }}
-                    <div class="flex flex-row items-center m-3 justify-between">
-                        <div class="flex flex-col flex-2/3 p-2 font-medium text-[12px] text-[#6F7D93]">
-                            <p>{{ $event->title }}</p>
-                            <p>
-                                {{ $event->formatted_start }} - {{ $event->formatted_end }}
-                            </p>
-                            {{-- <p>{{ $event->start }} - {{ $event->end }}</p>
-                        </div>
-                        <button id="openModalUpdateEvent" data-id="{{ $event->id }}" data-title="{{ $event->title }}"
-                            data-start="{{ $event->start }}" data-end="{{ $event->end }}" data-note="{{ $event->note }}"
-                            class="edit-button">
-                            <img src="{{ asset('assets/images/edit_57.png') }}" class="w-[12px] h-[12px]" alt="Edit icon">
-                        </button>
-                    </div>
-                @endforeach
-
-
-            </div>
-
-            </div> --}}
-
-
-
-        <!-- Modal structure -->
+       
         <!-- Create Modal -->
         <div id="eventModal" class="fixed z-50 inset-0 flex items-center justify-center hidden bg-black bg-opacity-50">
             @include('components.events.event-modal', [
