@@ -30,7 +30,7 @@
 
 <body class="bg-[#F7F7F7] p-0 m-0">
 
-    <div class=" flex flex-row p-[20px_17px_0_10px] box-sizing-border  w-full h-screen">
+    <div class=" flex flex-row md:p-[20px_17px_0_10px] box-sizing-border  w-full h-screen">
         <!-- side bar -->
         @include('layouts.sidebar')
 
