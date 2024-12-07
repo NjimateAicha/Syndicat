@@ -3,112 +3,79 @@
 @section('content')
     <x-layouts.navbar :user="Auth::user()" route="infocom.residence" />
 
-    <div class="flex flex-col w-full">
+    <div class="flex flex-col w-full p-4">
         <!-- Header Section -->
-        <div class="pb-[27px] flex flex-row justify-between w-full">
-            <div class="font-semibold text-[14px] text-[#3C4C7C] mr-[8.5px]">{{ __('Info`Com') }}</div>
-            <x-infocoms.filter></x-infocoms.filter>
+        <div class="pb-6 flex flex-col sm:flex-row justify-between w-full">
+            <div class="font-semibold text-lg sm:text-base text-[#3C4C7C] mb-4 sm:mb-0">{{ __('Info`Com') }}</div>
+            <x-infocoms.filter />
         </div>
 
         <!-- Content Section -->
-        <div class="flex flex-row justify-between">
-            <div class="flex flex-col items-center pr-[20px] w-full ">
-
-                <!-- Add Info Section -->
+        <div class="flex flex-col sm:flex-row justify-between gap-6">
+            <!-- Info List Section -->
+            <div class="flex flex-col w-full sm:pr-5">
                 @foreach ($infoComsUser as $infocom)
-                    <div
-                        class="bg-white rounded-[20px] mb-[10px] p-[17.5px_20px_25px_15px] w-full flex flex-col items-center ">
-                        <div class="flex flex-row justify-between w-full mb-[22.5px]">
-                            <span class="w-[270px] font-semibold text-[12px] text-[#6F7D93]">{{ $infocom->titre }}</span>
-                            <span class="text-[12px] text-[#6F7D93]">{{ $infocom->created_at->format('d/m/Y') }}</span>
+                    <div class="bg-white rounded-lg mb-4 p-4 shadow-sm w-full">
+                        <div class="flex justify-between mb-4">
+                            <span class="font-semibold text-sm text-[#6F7D93] truncate w-2/3">{{ $infocom->titre }}</span>
+                            <span class="text-sm text-[#6F7D93]">{{ $infocom->created_at->format('d/m/Y') }}</span>
                         </div>
-                        <span class="text-[12px] text-[#6F7D93] mb-[15px]">{{ $infocom->description }}</span>
+                        <span class="text-sm text-[#6F7D93]">{{ $infocom->description }}</span>
                     </div>
                 @endforeach
 
                 @foreach ($infoComs as $infocom)
-                    <div
-                        class="bg-white rounded-[20px] mb-[10px] p-[17.5px_20px_25px_15px] w-full flex flex-col items-center ">
-                        <div class="flex flex-row justify-between w-full mb-[22.5px]">
-                            <span class="w-[270px] font-semibold text-[12px] text-[#6F7D93]">{{ $infocom->titre }}</span>
-                            <span class="text-[12px] text-[#6F7D93]">{{ $infocom->created_at->format('d/m/Y') }}</span>
+                    <div class="bg-white rounded-lg mb-4 p-4 shadow-sm w-full">
+                        <div class="flex justify-between mb-4">
+                            <span class="font-semibold text-sm text-[#6F7D93] truncate w-2/3">{{ $infocom->titre }}</span>
+                            <span class="text-sm text-[#6F7D93]">{{ $infocom->created_at->format('d/m/Y') }}</span>
                         </div>
-                        <span class="text-[12px] text-[#6F7D93] mb-[15px]">{{ $infocom->description }}</span>
+                        <span class="text-sm text-[#6F7D93]">{{ $infocom->description }}</span>
                     </div>
                 @endforeach
-
             </div>
 
             <!-- Add Info Section -->
             @role('Super Admin|Admin|Manager principal|Manager')
-                <form
-                    class="shadow-[0px_4px_4px_rgba(0,0,0,0.25)] rounded-[20px] bg-white p-[16.5px_0_18px_0] flex flex-col w-full max-w-[330px]"
+                <form 
+                    class="shadow-lg rounded-lg bg-white p-6 w-full sm:w-1/3"
                     method="POST" action="{{ route('infocom.store') }}" enctype="multipart/form-data">
                     @csrf
 
-            <div class="text-[14px] font-semibold text-[#3C4C7C] mb-[26.5px] px-[25px]">{{ __('Ajouter Un Info`Com') }}</div>
+                    <div class="text-lg font-semibold text-[#3C4C7C] mb-6">{{ __('Ajouter Un Info`Com') }}</div>
 
-                    <div class="bg-[#F7F7F7] h-[1px] mb-[24.5px] w-full max-w-[380px] mx-auto"></div>
-
-                    <div class="text-[12px] font-medium text-[#6F7D93] mb-[12.5px] px-[25px]">{{ __('SelectRecipient') }}</div>
-
-                    {{-- <div
-                        class="border border-[#9EAFCE] rounded-[8px] bg-[#F1F1F1] flex flex-row justify-between px-[15px] py-[12.5px] mb-[19.5px] mx-[25px] max-w-[330px]">
-                        <select name="user_id" class="bg-transparent text-[12px] text-[#A2A2A2] w-full focus:outline-none">
-                            <option value="all">Send to All Users</option>
-                            @foreach ($users as $user)
-                                <option value="{{ $user->id }}">{{ $user->name . ' ' . $user->prenom }}</option>
-                            @endforeach
-                        </select>
-                    </div> --}}
-                    <div class="border border-[#9EAFCE] rounded-lg bg-[#F1F1F1] px-4 py-3 mb-5 mx-6 max-w-[330px] h-[100px] overflow-y-scroll">
+                    <div class="text-sm font-medium text-[#6F7D93] mb-3">{{ __('Select Recipient') }}</div>
+                    <div class="border border-gray-300 rounded-lg bg-gray-100 px-4 py-3 mb-5 h-32 overflow-y-auto">
                         <label class="flex items-center space-x-2 mb-3">
-                            <input type="checkbox" id="select-all" class="w-4 h-4 text-[#9EAFCE] border-gray-300 rounded focus:ring-[#9EAFCE]">
-                            <span class="text-sm text-[#A2A2A2]">{{ __('Send to All Users') }}</span>
+                            <input type="checkbox" id="select-all" class="w-4 h-4 text-blue-600">
+                            <span class="text-sm text-gray-600">{{ __('Send to All Users') }}</span>
                         </label>
-
-                        <div class="flex flex-col space-y-2 max-h-[150px] ">
+                        <div class="flex flex-col space-y-2">
                             @foreach ($users as $user)
-                                <label class="flex items-center space-x-2 mb-2">
-                                    <input type="checkbox" name="user_ids[]" value="{{ $user->id }}" class="user-checkbox w-4 h-4 text-[#9EAFCE] border-gray-300 rounded focus:ring-[#9EAFCE]">
-                                    <span class="text-sm text-[#A2A2A2]">{{ $user->name . ' ' . $user->prenom }}</span>
+                                <label class="flex items-center space-x-2">
+                                    <input type="checkbox" name="user_ids[]" value="{{ $user->id }}" class="user-checkbox w-4 h-4 text-blue-600">
+                                    <span class="text-sm text-gray-600">{{ $user->name . ' ' . $user->prenom }}</span>
                                 </label>
                             @endforeach
                         </div>
-                    </div>
-
-
-                    <div class="text-[12px] font-medium text-[#6F7D93] mb-[12.5px] px-[25px]">{{ __('EnterTitle') }}</div>
-                    <div class="border border-[#9EAFCE] rounded-[8px] bg-[#F1F1F1] p-[12.5px] mb-[19.5px] mx-[25px]">
-                        <input type="text" name="titre"
-                            class="bg-transparent text-[12px] text-[#A2A2A2] w-full focus:outline-none"
-                            placeholder="{{ __('ExampleTitle') }}">
                     </div>
 
-                    <div class="text-[12px] font-medium text-[#6F7D93] mb-[12.5px] px-[25px]">{{ __('EnterDescription') }}</div>
-                    <div class="border border-[#9EAFCE] rounded-[8px] bg-[#F1F1F1] p-[17px_15px] mb-[40px] mx-[25px]">
-                        <textarea name="description"
-                            class="bg-transparent text-[12px] text-[#A2A2A2] w-full h-[100px] resize-none overflow-hidden focus:outline-none"
-                            placeholder="{{ __('ExampleDescription') }}"></textarea>
-                    </div>
+                    <div class="text-sm font-medium text-[#6F7D93] mb-3">{{ __('Enter Title') }}</div>
+                    <input type="text" name="titre" class="border border-gray-300 rounded-lg w-full px-4 py-2 mb-5 text-sm bg-gray-100" placeholder="{{ __('Example Title') }}">
+
+                    <div class="text-sm font-medium text-[#6F7D93] mb-3">{{ __('Enter Description') }}</div>
+                    <textarea name="description" class="border border-gray-300 rounded-lg w-full px-4 py-2 h-32 mb-5 text-sm bg-gray-100 resize-none" placeholder="{{ __('Example Description') }}"></textarea>
+
                     <input type="hidden" name="residence_id" value="{{ $residence->id }}">
-
-                    {{-- <div class="flex flex-row justify-end px-[25px]"> --}}
-                        <button type="submit">
-                            <div class="rounded-[60px] border-[1px_solid_#9EAFCE] bg-[#3C4C7C] relative m-[0_25px_0_25px] flex p-[11.5px_0_11.5px_0] box-border justify-center">
-                                <span class="break-words font-['Inter'] font-bold text-[14px] text-[#FFFFFF]">{{ __('Envoyer') }}</span>
-                            </div>
-                        </button>
-                    {{-- </div> --}}
                     
+                    <button type="submit" class="w-full bg-[#3C4C7C] text-white font-semibold rounded-lg py-3">
+                        {{ __('Envoyer') }}
+                    </button>
                 </form>
             @endrole
-
         </div>
-        {{-- <div class="mt-4 w-full flex justify-center">
-            {{ $infoComs->links('vendor.pagination.tailwind') }} <!-- Adjust pagination style if needed -->
-        </div> --}}
     </div>
+
     <script>
         document.getElementById('select-all').addEventListener('change', function () {
             const userCheckboxes = document.querySelectorAll('.user-checkbox');
