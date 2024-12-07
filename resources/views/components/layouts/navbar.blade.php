@@ -13,12 +13,17 @@
                 echo $user
                 @endphp --}}
 <div class="relative items-center flex gap-4 md:flex-row lg:flex-row flex-col  justify-between w-full p-5 bg-white rounded-[20px] mb-7 box-border">
-    <button id="toggleSidebar" class="p-2 bg-blue-600 text-white z-50 rounded-md flex flex-col justify-between h-12 w-12">
-        <span class="block h-1.5 w-8 bg-white rounded-sm"></span>
-        <span class="block h-1.5 w-8 bg-white rounded-sm"></span>
-        <span class="block h-1.5 w-8 bg-white rounded-sm"></span>
-    </button>
-    <div class="flex gap-4 md:gap-0 flex-col md:flex-row w-full">
+    <div class="flex justify-between items-center">
+        <button id="toggleSidebar" class="p-2 bg-[#697C9B] text-white z-50 rounded-md flex flex-col justify-between h-12 w-12 md:hidden">
+            <span class="block h-1.5 w-8 bg-white rounded-sm"></span>
+            <span class="block h-1.5 w-8 bg-white rounded-sm"></span>
+            <span class="block h-1.5 w-8 bg-white rounded-sm"></span>
+        </button>
+      
+   
+
+    
+    <div class="flex gap-4 md:gap-0 flex-col md:flex-row w-3/4 md:w-full">
         {{-- @if ($residence_all) --}}
         @role('Super Admin|Admin')
             <div
@@ -40,12 +45,7 @@
 
 
             @if (Route::is('reglages.show'))
-                <!-- Select bar HTML code -->
-                {{-- @if ($residencePassed)
-                <p>Current Residence: {{ $residence->active }}</p>
-                @else
-                <p>No residence selected.</p>
-                @endif --}}
+               
                 <form action="{{ route('residence.update-status', $residence->id) }}" method="POST">
                     @csrf
                     @method('PUT')
@@ -98,7 +98,7 @@
             </div>
         @endrole
     </div>
-
+</div>
     {{-- <div class="relative inline-block text-left z-20">{{ $residence_all }}</div> --}}
     {{-- @endif --}}
 
@@ -109,21 +109,7 @@
         <!-- Dropdown Button -->
         <div class="relative">
             <button id="dropdownButton" class="relative flex flex-row box-sizing-border">
-                {{-- <form action="{{ route('locale.change') }}" method="POST" class="inline-block">
-                    @csrf
-                    <select name="locale" onchange="this.form.submit()" class="border ml-5 mt-2 border-gray-300 rounded-lg py-2 px-4 bg-white text-gray-700 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent">
-                        <option value="en"{{ app()->getLocale() == 'en' ? ' selected' : '' }}>En</option>
-                    
-                        <option value="fr"{{ app()->getLocale() == 'fr' ? ' selected' : '' }}>Fr</option>
-                    </select>
-                </form>      --}}
-                {{-- <form action="{{ route('locale.change') }}" method="POST" class="inline-block">
-                    @csrf
-                    <select name="locale" onchange="this.form.submit()" class="border ml-2 mt-1 border-gray-300 rounded-md py-1 px-2 bg-white text-gray-700 focus:outline-none focus:ring-1 focus:ring-blue-500 focus:border-transparent text-sm">
-                        <option value="en"{{ app()->getLocale() == 'en' ? ' selected' : '' }}>En</option>
-                        <option value="fr"{{ app()->getLocale() == 'fr' ? ' selected' : '' }}>Fr</option>
-                    </select>
-                </form> --}}
+                
                 <?php
         $languages = DB::table('langs')->get();
         ?>

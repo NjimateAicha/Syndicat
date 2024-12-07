@@ -134,29 +134,7 @@ class UserController extends Controller
 
     public function searchContacts(Request $request)
     {
-        // // Get the search input, or default to an empty string
-        // $search = $request->search ?? '';
-        // // Query for users involved in conversations
-        // $users = Message::join('users', function ($join) {
-        //         $join->on('ch_messages.from_id', '=', 'users.id')
-        //              ->orOn('ch_messages.to_id', '=', 'users.id');
-        //     })
-        //     ->leftjoin('residences', 'users.residence_id', '=', 'residences.id')
-        //     ->where('users.residence_id', Auth::user()->residence_id)
-        //     // ->where(function ($query) {
-        //     //     $query->where('ch_messages.from_id', Auth::id())
-        //     //           ->orWhere('ch_messages.to_id', Auth::id());
-        //     // })
-        //     ->where('users.name', 'like', '%' . $search . '%') // Search by user name
-        //     ->where('users.id', '!=', Auth::id()) // Exclude the current user
-        //     ->distinct('users.id') // Ensure unique users
-        //     ->select('users.*') // Select user details
-        //     ->paginate(10); // Optionally paginate results
-
-        // // Return the view with users
-        // return view('tchat.show', compact('users'));
-        // Get the search input, defaulting to an empty string
-
+        
 
         if ($request->search == null)
             $users = User::where('residence_id', Auth::user()->residence_id)->get();

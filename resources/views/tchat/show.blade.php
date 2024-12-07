@@ -105,15 +105,12 @@
                 <li data-contact="{{ $usersList->id }}"
                     class="messenger-list-modal flex justify-between items-start p-2 bg-white border-b border-gray-200 shadow-sm rounded-md transition-all duration-300 ease-in-out">
                     <div class="flex items-center space-x-4">
-                        <!-- Avatar -->
-                        {{-- <div class="avatar av-m"
-                            style="background-image: url('{{ $usersList->avatar }}');">
-                             <div class="avatar av-s header-avatar" style="margin: 0 10px; margin-top: -5px; margin-bottom: -5px;"></div>
-
-                        </div> --}}
+                      
                         <div class="avatar av-m"
                         style="background-image: url('{{ $usersList->avatar ? $usersList->avatar : asset('path/to/default-avatar.png') }}');">
                         <!-- Small avatar inside -->
+                        <img src="{{ $usersList->image ? asset('storage/' . $usersList->image) : asset('assets/images/avatar.png') }}" alt="User Profile" 
+                        class="w-[50px] h-[50px] rounded-full bg-cover bg-center">
                         <div class="avatar av-s header-avatar"
                              style="margin: 0 10px; margin-top: -5px; margin-bottom: -5px;">
                         </div>
