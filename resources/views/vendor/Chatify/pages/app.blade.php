@@ -6,7 +6,7 @@
 
     @include('Chatify::layouts.headLinks')
 
-    <div class="messenger">
+    <div class="messenger ">
         {{-- Liste des utilisateurs/groupes --}}
         <div class="messenger-listView {{ !!$id ? 'conversation-active' : '' }}">
             {{-- En-tête et barre de recherche --}}
