@@ -6,7 +6,7 @@
     <div class="flex flex-col w-full p-4 space-y-4">
 
         <!-- First layout -->
-        <div class="w-full p-4 rounded-lg flex flex-row justify-between items-center space-x-4">
+        <div class="w-full p-4 rounded-lg flex flex-col md:flex-row justify-between items-center space-x-4">
             <!-- Heading on the left -->
             <h2 class="inline-block break-words font-['Inter'] font-semibold text-[14px] text-[#3C4C7C]">
                 {{__('Useful Contacts')}}
@@ -43,7 +43,7 @@
 
 
         <!-- Second layout -->
-        <div class="w-full rounded-lg flex flex-row box-sizing-border  ">
+        <div class="w-full rounded-lg flex flex-col md:gap-0 gap-4 md:flex-row box-sizing-border  ">
             <!-- Left Section (Table) -->
             <div class="flex-grow bg-white p-6 rounded-[20px] shadow-md">
                 <table class="w-full text-left border-collapse">
@@ -135,7 +135,7 @@
 
 
             <!-- Right Section (Profile Info) -->
-            <div class="flex-grow bg-white p-6 rounded-[20px] shadow-md ml-4 h-[600px]">
+            <div class="flex-grow bg-white p-6 rounded-[20px] shadow-md md:ml-4 md:h-[600px]">
                 <h2
                     class="mb-6 inline-block self-start break-words font-['Inter'] font-semibold text-[14px] text-[#3C4C7C]">
                     {{ __('Profil') }}</h2>

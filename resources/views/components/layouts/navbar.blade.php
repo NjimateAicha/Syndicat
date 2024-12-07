@@ -12,18 +12,18 @@
                 {{-- @php
                 echo $user
                 @endphp --}}
-<div class="relative items-center flex md:flex-row lg:flex-row flex-col  justify-between w-full p-5 bg-white rounded-[20px] mb-7 box-border">
+<div class="relative items-center flex gap-4 md:flex-row lg:flex-row flex-col  justify-between w-full p-5 bg-white rounded-[20px] mb-7 box-border">
     <button id="toggleSidebar" class="p-2 bg-blue-600 text-white z-50 rounded-md flex flex-col justify-between h-12 w-12">
         <span class="block h-1.5 w-8 bg-white rounded-sm"></span>
         <span class="block h-1.5 w-8 bg-white rounded-sm"></span>
         <span class="block h-1.5 w-8 bg-white rounded-sm"></span>
     </button>
-    <div class="flex">
+    <div class="flex gap-4 md:gap-0 flex-col md:flex-row w-full">
         {{-- @if ($residence_all) --}}
         @role('Super Admin|Admin')
             <div
-                class="shadow-md rounded-[8px] bg-[#E9ECEE] relative flex flex-row justify-between p-2 box-border
-         w-80 h-[60px] break-words font-['Fredoka_One','Roboto_Condensed'] font-normal text-[20px] text-[#6F7D93]">
+                class="shadow-md rounded-[8px] bg-[#E9ECEE] relative w-full flex flex-row justify-between p-2 box-border
+         md:w-80 h-[60px] break-words font-['Fredoka_One','Roboto_Condensed'] font-normal text-[20px] text-[#6F7D93]">
                 <select onchange="location = this.value;"
                     class="w-full bg-transparent text-[#6F7D93] font-normal text-[20px]">
                     @foreach ($residence_all as $residence)
@@ -50,7 +50,7 @@
                     @csrf
                     @method('PUT')
                     <select name="active"
-                        class="box-border rounded-[8px] p-2 w-30 h-[60px] bg-[#E9ECEE] font-['Fredoka_One','Roboto_Condensed'] text-[#6F7D93] font-normal text-[20px] ml-4"
+                        class="box-border rounded-[8px] p-2 w-full md:w-30 h-[60px] bg-[#E9ECEE] font-['Fredoka_One','Roboto_Condensed'] text-[#6F7D93] font-normal text-[20px] md:ml-4"
                         onchange="this.form.submit()">
                         <option value="0" {{ $residence->active == 0 ? 'selected' : '' }}>{{__('Active')}}</option>
                         <option value="1" {{ $residence->active == 1 ? 'selected' : '' }}>{{__('Inactive')}}</option>
@@ -59,7 +59,7 @@
 
                 <!-- Button to open modal -->
                 <button id="openModalButton"
-                    class=" py-2 px-4 flex items-center box-border rounded-[8px] p-2 w-30 h-[60px] bg-[#E9ECEE] font-['Fredoka_One','Roboto_Condensed'] text-[#6F7D93] font-normal text-[20px] ml-4">
+                    class=" py-2 px-4 flex items-center box-border rounded-[8px] p-2 w-full md:w-30 h-[60px] bg-[#E9ECEE] font-['Fredoka_One','Roboto_Condensed'] text-[#6F7D93] font-normal text-[20px] md:ml-4">
                     {{__('Ajouter Résidence')}} +
                 </button>
 
