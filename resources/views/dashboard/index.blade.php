@@ -56,7 +56,7 @@
                             @forelse ($users as $user)
                                 @if (Auth::user()->hasAnyRole(['Super Admin', 'Admin']))
                                     <tr>
-                                        <td class="px-6 py-4 flex items-center space-x-3">
+                                        <td class="px-6 py-4 mr-4 md:mr-0 flex items-center space-x-3">
                                              <img src="{{ $user->image ? asset('storage/' . $user->image) : asset('assets/images/avatar.png') }}"
                                             alt="User Profile" class="rounded-[8px] w-[40px] h-[40px] bg-cover bg-center">
                                            
@@ -82,7 +82,7 @@
                                 @elseif(Auth::user()->hasAnyRole(['Manager principal', 'Manager', 'Propriétaire']))
                                     @if (optional($user->roles->first())->name !== 'Admin' && optional($user->roles->first())->name !== 'Super Admin')
                                     <tr>
-                                        <td class="px-6 py-4 flex items-center space-x-3">
+                                        <td class="px-6 py-4 mr-4 md:mr-0 flex items-center space-x-3">
                                              <img src="{{ $user->image ? asset('storage/' . $user->image) : asset('assets/images/avatar.png') }}"
                                             alt="User Profile" class="rounded-[8px] w-[40px] h-[40px] bg-cover bg-center">
                                            
@@ -108,7 +108,7 @@
                                 @else
                                     @if (optional($user->roles->first())->name !== 'Admin' && optional($user->roles->first())->name !== 'Super Admin' && optional($user->roles->first())->name !== 'Propriétaire' && optional($user->roles->first())->name !== 'Résident')
                                     <tr>
-                                        <td class="px-6 py-4 flex items-center space-x-3">
+                                        <td class="px-6 py-4 mr-4 md:mr-0  flex items-center space-x-3">
                                              <img src="{{ $user->image ? asset('storage/' . $user->image) : asset('assets/images/avatar.png') }}"
                                             alt="User Profile" class="rounded-[8px] w-[40px] h-[40px] bg-cover bg-center">
                                            
