@@ -73,6 +73,7 @@
 
                     @if (!empty($users) && $users->count() > 0)
                     @foreach ($users as $user)
+                    
                         <tr class="border-b">
                             <td class="p-2 flex items-center space-x-2 text-left">
                                     <img src="{{ $user->image ? asset('storage/' . $user->image) : asset('assets/images/avatar.png') }}"
@@ -108,7 +109,8 @@
                                 </button>
                                 @endforeach
     
-                                </td>
+                            </td>
+                            
                             @role('Super Admin|Admin|Manager principal|Manager')
                                 <td class="p-2 text-center font-['Inter'] text-[12px] text-[#3A416F]">
                                     {{ $user->phone }}
